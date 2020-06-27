@@ -7,7 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -95,8 +95,12 @@ function SimpleMenu() {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>Portfolio</MenuItem>
+          <MenuItem onClick={handleClose} >
+                <Button href="/profile">Profile</Button>
+          </MenuItem>
+          <MenuItem onClick={handleClose} >
+                <Button href='/portfolio'>Portfolio</Button>
+          </MenuItem>
         </Menu>
       </div>
     );
@@ -127,7 +131,6 @@ export default function SearchAppBar() {
             />
           </div>
         </Toolbar>
-
       </AppBar>
     </div>
   );

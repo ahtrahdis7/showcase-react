@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => ({
 const HomePage = () => {
     return(
         <div>
-            <h1>HomePage</h1>
+            <h1>profile</h1>
         </div>
     )
 }
@@ -38,9 +38,9 @@ class Main extends Component {
             <div>
               <Header/>
               <Switch>
-                <Route path='/about' component={HomePage} />
+                <Route path='/profile' component={HomePage} />
                 <Route path='/portfolio'  />
-                <Redirect to="/about" />
+                <Redirect to='/profile' />
               </Switch>
             {/* <Footer/> */}
           </div>
