@@ -1,5 +1,5 @@
-import About from './about.js';
-import Portfolio from './portfolio.js';
+import About from './about';
+import Portfolio from './portfolio';
 import Header from './Header';
 import React, {Component} from 'react';
 import { fetchPhotos } from '../redux/fetch';
@@ -17,30 +17,38 @@ const mapDispatchToProps = dispatch => ({
     fetchPhotos: () => { dispatch(fetchPhotos())},
   });
 
-const HomePage = () => {
-    return(
-        <div>
-            <h1>profile</h1>
-        </div>
-    )
-}
+
 
 class Main extends Component {
 
     componentDidMount() {
-        console.log("main this")
-        console.log(this);
         this.props.fetchPhotos();
       }
 
+      
+
     render() {
+      console.log(this.props.photos);
+      const HomePage = () => {
+        return(
+                <div>
+                    <h1>profile</h1>
+                </div>
+              )
+          }
+
+        const portfolio = () => {
+          return(
+            <Portfolio photos={this.props.photos.photos} />
+          )
+        }
         return (
             <div>
               <Header/>
               <Switch>
                 <Route path='/profile' component={HomePage} />
-                <Route path='/portfolio'  />
-                <Redirect to='/profile' />
+                <Route path='/portfolio' component={portfolio} />
+                <Redirect to='/profile'/>
               </Switch>
             {/* <Footer/> */}
           </div>

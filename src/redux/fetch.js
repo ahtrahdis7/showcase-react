@@ -4,7 +4,7 @@ import * as Credentials from '../credentials';
 export const fetchPhotos = () => (dispatch) => { 
     console.log(dispatch);
     dispatch(photosLoading(true));
-    return fetch("https://api.unsplash.com//search/collections?client_id="+Credentials.ACCESS_KEY+"&query=sunset")
+    return fetch("https://api.unsplash.com//search/photos?client_id="+Credentials.ACCESS_KEY+"&query=nature")
     .then(response => {
         if (response.ok) {
           return response;
