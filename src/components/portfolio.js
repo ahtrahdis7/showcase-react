@@ -4,17 +4,29 @@ import { makeStyles } from '@material-ui/core/styles';
 import * as Credentials from "../credentials";
 
 const useStyles = makeStyles({
-    root: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 500,
-      width: 500,
-    },
+    img: props => ({
+        height: props.height/10,
+        width: props.width/10
+    })
   });
 
-export default function Portfolio(props){
-    const classes = useStyles();
+function RenderImage(image){
+    const props = { height: image.image.height, };
+    const classes = useStyles(props);
+    return (
+            <Card key={image.id}>
+                    <CardActionArea>
+                    <CardMedia 
+                    className={`${classes.img}`}
+                    image={image.image.urls.full}
+                    title={image.id} />
+                    </CardActionArea>
+                    <Divider/>
+                </Card>
+    )
+}
+
+function Portfolio(props){
     if(props.photos.results == null){
         return(
             <div>
@@ -23,15 +35,7 @@ export default function Portfolio(props){
     } else {
         const pics = props.photos.results.map((image) => {
             return (
-                <Card key={image.id}>
-                    <CardActionArea>
-                    <CardMedia 
-                    className={classes.media}
-                    image={image.urls.regular}
-                    title={image.id} />
-                    </CardActionArea>
-                    <Divider/>
-                </Card>
+                <RenderImage image={image} />
             );
         });
         return(
@@ -41,5 +45,7 @@ export default function Portfolio(props){
         );
     }
 }
+
+export default Portfolio;
 
 
