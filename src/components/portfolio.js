@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea, Divider, Paper } from '@material-ui/core';
+import { Card, CardMedia, CardActionArea, Divider, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
         width: props.width/10
     }),
     card: {
-        padding: '5px 10px'
+        padding: '1px'
     }
   });
 
@@ -16,16 +16,17 @@ function RenderImage(image){
     const props = { height: image.image.height };
     const classes = useStyles(props);
     return (
-        <Card key={image.id} className={classes.card}>
+        <Grid item xs={12} sm={6} md={4}>
+            <Card key={image.id} className={classes.card}>
             <CardActionArea>
-            <CardMedia 
-            className={`${classes.img}`}
-            image={image.image.urls.regular}
-            title={image.id} />
+                <CardMedia 
+                width="auto"
+                className={`${classes.img}`}
+                image={image.image.urls.regular}
+                title={image.id} />
             </CardActionArea>
-            <Paper elevation={3} />
-            <Divider/>
-        </Card>
+            </Card>
+        </Grid>
     );
 }
 
@@ -43,8 +44,10 @@ function Portfolio(props){
         });
         return(
             <div>
+            <Grid container spacing={2} xs={12} width="auto">
                 {pics}
-            </div>
+            </Grid>
+        </div>
         );
     }
 }
