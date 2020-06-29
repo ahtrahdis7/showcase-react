@@ -7,14 +7,11 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { Menu, MenuItem, Button } from '@material-ui/core';
+import { Menu, MenuItem, Button, Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
@@ -108,13 +105,15 @@ function SimpleMenu() {
 
 export default function SearchAppBar(props) {
   const classes = useStyles();
+
+
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <SimpleMenu/>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Nature-O-graphY
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -134,6 +133,8 @@ export default function SearchAppBar(props) {
           </div>
         </Toolbar>
       </AppBar>
+      <Divider/>
+      <Divider/>
     </div>
   );
 }
