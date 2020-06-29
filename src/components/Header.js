@@ -106,8 +106,10 @@ function SimpleMenu() {
     );
   }
 
-export default function SearchAppBar() {
+export default function SearchAppBar(props) {
   const classes = useStyles();
+  console.log("header");
+  console.log(props);
 
   return (
     <div className={classes.root}>
@@ -127,7 +129,10 @@ export default function SearchAppBar() {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              fullWidth="true"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(event)  => {
+                props.fetchPhotos(event.target.value)}}
             />
           </div>
         </Toolbar>

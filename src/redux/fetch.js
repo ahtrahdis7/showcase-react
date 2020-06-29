@@ -1,10 +1,10 @@
 import * as ActionTypes from './actionTypes';
 import * as Credentials from '../credentials';
 
-export const fetchPhotos = () => (dispatch) => { 
+export const fetchPhotos = (SearchTerm) => (dispatch) => { 
     console.log(dispatch);
     dispatch(photosLoading(true));
-    return fetch("https://api.unsplash.com//search/photos?client_id="+Credentials.ACCESS_KEY+"&query=nature")
+    return fetch("https://api.unsplash.com//search/photos?client_id="+Credentials.ACCESS_KEY+"&query="+SearchTerm+"&per_page=30")
     .then(response => {
         if (response.ok) {
           return response;
@@ -28,9 +28,9 @@ export const photosLoading = () => ({
 });
 
 export const addPhotos = (photos) => ({
-        type: ActionTypes.ADD_PHOTOS,
-        payload: photos
-    });
+    type: ActionTypes.ADD_PHOTOS,
+    payload: photos
+});
 
 export const photosFailed = (errmess) => ({
     type: ActionTypes.PHOTOS_FAILED,

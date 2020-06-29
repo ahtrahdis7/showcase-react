@@ -6,7 +6,8 @@ import { Photos } from './photos';
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
-            photos: Photos
+            photos: Photos,
+            
         }),
         applyMiddleware(thunk, logger)
     );

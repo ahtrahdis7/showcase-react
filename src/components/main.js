@@ -13,22 +13,18 @@ const mapStateToProps = state => {
     }
 };
 
+
 const mapDispatchToProps = dispatch => ({
-    fetchPhotos: () => { dispatch(fetchPhotos())},
+    fetchPhotos: (prop) => { dispatch(fetchPhotos(prop))},
   });
-
-
 
 class Main extends Component {
 
     componentDidMount() {
-        this.props.fetchPhotos();
+        this.props.fetchPhotos("nature");
       }
-
-      
-
     render() {
-      console.log(this.props.photos);
+      console.log(this);
       const HomePage = () => {
         return(
                 <div>
@@ -36,15 +32,14 @@ class Main extends Component {
                 </div>
               )
           }
-
         const portfolio = () => {
           return(
-            <Portfolio photos={this.props.photos.photos} />
+            <Portfolio photos={this.props.photos.photos}  />
           )
         }
         return (
             <div>
-              <Header/>
+              <Header fetchPhotos={this.props.fetchPhotos}/>
               <Switch>
                 <Route path='/profile' component={HomePage} />
                 <Route path='/portfolio' component={portfolio} />
