@@ -6,8 +6,11 @@ const useStyles = makeStyles({
     img: props => ({
         height: props.height/12,
     }),
+    grid: {
+        padding: '2px'
+    },
     card: {
-        padding: '1px'
+        padding: '6px'
     }
   });
 
@@ -15,8 +18,8 @@ function RenderImage(image){
     const props = { height: image.image.height };
     const classes = useStyles(props);
     return (
-        <Grid item xs={12} >
-            <Card key={image.id} className={classes.card}>
+        <Grid item xs={12} className={classes.grid} >
+            <Card raised="true" key={image.id} className={classes.card} >
                 <CardActionArea>
                     <CardMedia 
                     width="auto"
@@ -42,30 +45,45 @@ function Portfolio(props){
         const arr3 = props.photos.results.slice(2*len/3, len);
 
         const picsg1 = arr1.map((image) => {
-            return (
-                <RenderImage image={image} />
-            );
+            if(image.height/10 > 200)
+                return (
+                    <RenderImage image={image} />
+                );
+            else 
+                return(
+                    <div></div>
+                );
         });
         const picsg2 = arr2.map((image) => {
-            return (
-                <RenderImage image={image} />
-            );
+            if(image.height/10 > 200)
+                return (
+                    <RenderImage image={image} />
+                );
+            else 
+                return(
+                    <div></div>
+                );
         });
         const picsg3 = arr3.map((image) => {
-            return (
-                <RenderImage image={image} />
-            );
+            if(image.height/10 > 250)
+                return (
+                    <RenderImage image={image} />
+                );
+            else 
+                return(
+                    <div></div>
+                );
         });
         return(
             <div>
-                <Grid container spacing={1} md={12} >
-                    <Grid  xs={12} md={4} sm={6} width="auto">
+                <Grid container spacing={4} md={12} >
+                    <Grid  xs={12} spacing={4} md={4} sm={6} width="auto">
                         {picsg1}
                     </Grid>
-                    <Grid  xs={12} md={4} sm={6} width="auto">
+                    <Grid  xs={12} spacing={4} md={4} sm={6} width="auto">
                         {picsg2}
                     </Grid>
-                    <Grid  xs={12} md={4} sm={6} width="auto">
+                    <Grid  xs={12} spacing={4} md={4} sm={6} width="auto">
                         {picsg3}
                     </Grid>
                 </Grid>

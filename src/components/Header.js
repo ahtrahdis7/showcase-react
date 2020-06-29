@@ -7,11 +7,14 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { Menu, MenuItem, Button, Divider } from '@material-ui/core';
+import { Menu, MenuItem, Button, Divider, Grid, GridItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  menuButton: {
+    position: 'left',
   },
   title: {
     flexGrow: 1,
@@ -77,8 +80,6 @@ function SimpleMenu() {
       <div>
         <IconButton 
         aria-controls="menu" 
-        aria-haspopup="true" 
-        edge="start"
         color="inherit"
         className={classes.menuButton}
         onClick={handleClick}>
@@ -111,30 +112,34 @@ export default function SearchAppBar(props) {
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar>
-          <SimpleMenu/>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Nature-O-graphY
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          <Grid item md={4}>
+            <SimpleMenu/>
+          </Grid>
+          <Grid item md={4}>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Nature-O-graphY
+            </Typography>
+          </Grid>
+          <Grid item md={4}>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                fullWidth="true"
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={(event)  => {
+                  props.fetchPhotos(event.target.value)}}
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              fullWidth="true"
-              inputProps={{ 'aria-label': 'search' }}
-              onChange={(event)  => {
-                props.fetchPhotos(event.target.value)}}
-            />
-          </div>
+          </Grid>
         </Toolbar>
       </AppBar>
-      <Divider/>
-      <Divider/>
     </div>
   );
 }
