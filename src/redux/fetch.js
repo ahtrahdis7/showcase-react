@@ -1,10 +1,9 @@
 import * as ActionTypes from './actionTypes';
 import * as Credentials from '../credentials';
 
-export const fetchPhotos = (SearchTerm) => (dispatch) => { 
-    console.log(dispatch);
+export const fetchPhotos = (SearchTerm, pageNo) => (dispatch) => { 
     dispatch(photosLoading(true));
-    return fetch("https://api.unsplash.com//search/photos?client_id="+Credentials.ACCESS_KEY+"&query="+SearchTerm+"&per_page=30")
+    return fetch("https://api.unsplash.com//search/photos?client_id="+Credentials.ACCESS_KEY+"&query="+SearchTerm+"&page="+pageNo+"&per_page=30")
     .then(response => {
         if (response.ok) {
           return response;

@@ -11,8 +11,6 @@ const store = ConfigureStore();
 class App extends Component {
 
   render(){
-    console.log("store");
-    console.log(store);
     return (
       <Provider store={store}>
         <BrowserRouter>

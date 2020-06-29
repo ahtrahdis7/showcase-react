@@ -24,7 +24,6 @@ class Main extends Component {
         this.props.fetchPhotos("nature");
       }
     render() {
-      console.log(this);
       const HomePage = () => {
         return(
                 <div>

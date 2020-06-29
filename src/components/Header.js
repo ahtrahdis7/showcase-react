@@ -108,9 +108,6 @@ function SimpleMenu() {
 
 export default function SearchAppBar(props) {
   const classes = useStyles();
-  console.log("header");
-  console.log(props);
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
