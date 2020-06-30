@@ -3,7 +3,7 @@ import Portfolio from './portfolio';
 import Header from './Header';
 import React, {Component} from 'react';
 import { fetchPhotos } from '../redux/fetch';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
+import { Switch, Route, Redirect, withRouter, Grid } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 

@@ -7,14 +7,18 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { Menu, MenuItem, Button, Divider, Grid, GridItem } from '@material-ui/core';
+import { Menu, MenuItem, Button, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   menuButton: {
-    position: 'left',
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+  },
+  appbar:{
+    paddingTop: 10,
+    paddingBottom: 10
   },
   title: {
     flexGrow: 1,
@@ -30,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
-    marginLeft: 0,
+    marginLeft: 400,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
@@ -55,9 +59,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '12ch',
+      width: '14ch',
       '&:focus': {
-        width: '20ch',
+        width: '14ch',
       },
     },
   },
@@ -110,17 +114,12 @@ export default function SearchAppBar(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
-        <Toolbar>
-          <Grid item md={4}>
+      <AppBar className={classes.appbar} position="fixed">
+        <Toolbar variant="dense" disableGutters="true">
             <SimpleMenu/>
-          </Grid>
-          <Grid item md={4}>
             <Typography className={classes.title} variant="h6" noWrap>
               Nature-O-graphY
             </Typography>
-          </Grid>
-          <Grid item md={4}>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -134,10 +133,9 @@ export default function SearchAppBar(props) {
                 fullWidth="true"
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(event)  => {
-                  props.fetchPhotos(event.target.value)}}
+                  props.fetchPhotos(event.target.value, 1)}}
               />
             </div>
-          </Grid>
         </Toolbar>
       </AppBar>
     </div>

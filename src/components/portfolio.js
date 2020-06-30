@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea,  Grid } from '@material-ui/core';
+import { Card, CardMedia, CardActionArea,  Grid, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -7,10 +7,13 @@ const useStyles = makeStyles({
         height: props.height/12,
     }),
     grid: {
-        padding: '2px'
+        padding: '10px'
     },
     card: {
-        padding: '6px'
+        padding: '3px'
+    },
+    root:{
+        paddingTop: 100
     }
   });
 
@@ -33,6 +36,8 @@ function RenderImage(image){
 }
 
 function Portfolio(props){
+    const classes = useStyles();
+
     if(props.photos.results == null){
         return(
             <div>
@@ -40,53 +45,66 @@ function Portfolio(props){
         )
     } else {
         var len = props.photos.results.length;
-        const arr1 = props.photos.results.slice(0, len/3);
-        const arr2 = props.photos.results.slice(len/3, 2*len/3);
-        const arr3 = props.photos.results.slice(2*len/3, len);
+        var array = props.photos.results;
+        var arr1 = [];
+        var arr2 = [];
+        var arr3 = [];
+        array.sort(function(a,b){
+            return b.height - a.height;
+        });
+        var count = 0;
+        for(var i=0; i < len; i++){
+            if(count){
+                if(i%3 === 0){
+                    count = count^1;
+                    arr1.push(array[i]);
+                }else if(i%3 === 1){
+                    arr2.push(array[i]);
+                }else{
+                    arr3.push(array[i]);
+                }
+            }else{
+                if(i%3 === 0){
+                    count = count^1;
+                    arr1.push(array[len-1-i]);
+                }else if(i%3 === 1){
+                    arr2.push(array[len-1-i]);
+                }else{
+                    arr3.push(array[len-1-i]);
+                }
+            }
+        }
 
         const picsg1 = arr1.map((image) => {
-            if(image.height/10 > 200)
-                return (
-                    <RenderImage image={image} />
-                );
-            else 
-                return(
-                    <div></div>
-                );
+            return (
+                <RenderImage image={image} />
+            );
         });
         const picsg2 = arr2.map((image) => {
-            if(image.height/10 > 200)
-                return (
-                    <RenderImage image={image} />
-                );
-            else 
-                return(
-                    <div></div>
-                );
+            return (
+                <RenderImage image={image} />
+            );
         });
         const picsg3 = arr3.map((image) => {
-            if(image.height/10 > 250)
-                return (
-                    <RenderImage image={image} />
-                );
-            else 
-                return(
-                    <div></div>
-                );
+            return (
+                <RenderImage image={image} />
+            );
         });
         return(
-            <div>
-                <Grid container spacing={4} md={12} >
-                    <Grid  xs={12} spacing={4} md={4} sm={6} width="auto">
-                        {picsg1}
+            <div >
+                <Container fluid className={classes.root}>
+                    <Grid container spacing={4} md={12} >
+                        <Grid  xs={12} md={4} sm={6} width="auto">
+                            {picsg1}
+                        </Grid>
+                        <Grid  xs={12} md={4} sm={6} width="auto">
+                            {picsg2}
+                        </Grid>
+                        <Grid  xs={12} md={4} sm={6} width="auto">
+                            {picsg3}
+                        </Grid>
                     </Grid>
-                    <Grid  xs={12} spacing={4} md={4} sm={6} width="auto">
-                        {picsg2}
-                    </Grid>
-                    <Grid  xs={12} spacing={4} md={4} sm={6} width="auto">
-                        {picsg3}
-                    </Grid>
-                </Grid>
+                </Container>
             </div>
         );
     }
