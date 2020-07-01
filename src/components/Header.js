@@ -7,7 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { Menu, MenuItem, Button, Grid } from '@material-ui/core';
+import { Menu, MenuItem, Button, Switch } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +65,10 @@ const useStyles = makeStyles((theme) => ({
         width: '20ch',
       },
     },
+  },
+  switch: {
+    
+    color: 'default'
   },
 }));
 
@@ -131,6 +135,7 @@ export default function SearchAppBar(props) {
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
+                defaultValue='nature'
                 fullWidth="true"
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(event)  => {
@@ -138,6 +143,9 @@ export default function SearchAppBar(props) {
               />
             </div>
         </Toolbar>
+        <Switch 
+          className={classes.switch}
+        />
       </AppBar>
     </div>
   );

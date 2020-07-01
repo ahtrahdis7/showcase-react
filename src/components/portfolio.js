@@ -10,10 +10,11 @@ const useStyles = makeStyles({
         padding: '10px'
     },
     card: {
-        padding: '3px'
+        padding: '3px',
+        flex: '1 0 auto',
     },
     root:{
-        paddingTop: 100,
+        paddingTop: 155,
         paddingRight: 4,
     },
   });
@@ -26,11 +27,13 @@ function RenderImage(image){
         <div>
         <Grid item xs={12} className={classes.grid} >
             <Card raised="true" key={image.id} className={classes.card} >
-            <CardMedia 
-                    width="auto"
-                    className={`${classes.img}`}
-                    image={image.image.urls.regular}
-                    title={image.id} />
+            <CardActionArea href={image.image.urls.raw}>
+                <CardMedia 
+                        width="auto"
+                        className={`${classes.img}`}
+                        image={image.image.urls.regular}
+                        title={image.id} />
+            </CardActionArea>
             </Card>
         </Grid>
         </div>

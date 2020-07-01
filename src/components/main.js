@@ -1,4 +1,3 @@
-import About from './about';
 import Portfolio from './portfolio';
 import Header from './Header';
 import React, {Component} from 'react';
@@ -30,7 +29,6 @@ class Main extends Component {
                     <h1>profile</h1>
                     <h1>profile</h1>
                     <h1>profile</h1>
-                    <h1>profile</h1>
 
                 </div>
               )
@@ -44,9 +42,8 @@ class Main extends Component {
             <div>
               <Header fetchPhotos={this.props.fetchPhotos}/>
               <Switch>
-                <Route path='/profile' component={HomePage} />
                 <Route path='/portfolio' component={portfolio} />
-                <Redirect to='/profile'/>
+                <Redirect to='/portfolio'/>
               </Switch>
             {/* <Footer/> */}
           </div>
