@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea,  Grid, Container, Modal, Fade, Backdrop, CardContent, Typography } from '@material-ui/core';
+import { Card, CardMedia, CardActionArea,  Grid, Container, GridList, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -14,9 +14,16 @@ const useStyles = makeStyles({
         flex: '1 0 auto',
     },
     root:{
-        paddingTop: 155,
-        paddingRight: 4,
+        paddingTop: 80,
+        paddingRight: 6,
     },
+    gridList: {
+        paddingTop: 10,
+        color: '#b3e5fc'
+      },
+      button: {
+        backgroundColor: "#b3e5fc"
+      }
   });
 
 
@@ -27,7 +34,7 @@ function RenderImage(image){
         <div>
         <Grid item xs={12} className={classes.grid} >
             <Card raised="true" key={image.id} className={classes.card} >
-            <CardActionArea href={image.image.urls.raw}>
+            <CardActionArea href={image.image.urls.full}>
                 <CardMedia 
                         width="auto"
                         className={`${classes.img}`}
@@ -40,7 +47,7 @@ function RenderImage(image){
     );
 }
 
-function Portfolio(props){
+function PortfolioGrid(props){
     const classes = useStyles();
 
     if(props.photos.results == null){
@@ -85,23 +92,31 @@ function Portfolio(props){
         return(
             <div >
                 <Container fluid className={classes.root}>
-                    <Grid container spacing={4} md={12} >
-                        <Grid  xs={12} md={4} sm={6} >
-                            {picsg1}
-                        </Grid>
-                        <Grid  xs={12} md={4} sm={6} >
-                            {picsg2}
-                        </Grid>
-                        <Grid  xs={12} md={4} sm={6} >
-                            {picsg3}
-                        </Grid>
-                    </Grid>
+                <Button href="/list" variant="contained" className={classes.button}>List view</Button>
+                <br></br>
+                    <div className={classes.gridList}>
+                        <GridList cellHeight="800" md={12}  >
+                            <Grid container spacing={4} md={12} sm={12} xs={12}>
+                                <Grid  xs={12} md={4} sm={6} >
+                                    {picsg1}
+                                </Grid>
+                                <Grid  xs={12} md={4} sm={6} >
+                                    {picsg2}
+                                </Grid>
+                                <Grid  xs={12} md={4} sm={6} >
+                                    {picsg3}
+                                </Grid>
+                            </Grid>
+                        </GridList>
+                    </div>
                 </Container>
             </div>
         );
     }
 }
 
-export default Portfolio;
+
+
+export default PortfolioGrid;
 
 

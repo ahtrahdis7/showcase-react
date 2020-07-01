@@ -13,19 +13,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    paddingLeft: `calc(1em + ${theme.spacing(0)}px)`,
-  },
   appbar:{
-    paddingTop: 10,
-    paddingBottom: 10
-  },
-  title: {
-    flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    paddingTop: 8,
+    paddingBottom: 8,
+    color: "#212121",
+    backgroundColor: "#b3e5fc"
   },
   search: {
     position: 'relative',
@@ -60,58 +52,13 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '10ch',
+      width: '150ch',
       '&:focus': {
-        width: '20ch',
+        width: '155ch',
       },
     },
   },
-  switch: {
-    
-    color: 'default'
-  },
 }));
-
-function SimpleMenu() {
-    const classes = useStyles();
-
-    const [anchorEl, setAnchorEl] = React.useState(null);
-  
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-  
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
-    return (
-      <div>
-        <IconButton 
-        aria-controls="menu" 
-        color="inherit"
-        className={classes.menuButton}
-        onClick={handleClick}>
-          <MenuIcon />
-        </IconButton>
-        <Menu
-          id="menu"
-          anchorEl={anchorEl}
-          keepMounted
-          color="inherit"
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={handleClose} >
-                <Button href="/profile">Profile</Button>
-          </MenuItem>
-          <MenuItem onClick={handleClose} >
-                <Button href='/portfolio'>Portfolio</Button>
-          </MenuItem>
-        </Menu>
-      </div>
-    );
-  }
 
 export default function SearchAppBar(props) {
   const classes = useStyles();
@@ -121,10 +68,6 @@ export default function SearchAppBar(props) {
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="fixed">
         <Toolbar variant="dense" disableGutters="true">
-            <SimpleMenu/>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Nature-O-graphY
-            </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -143,10 +86,7 @@ export default function SearchAppBar(props) {
               />
             </div>
         </Toolbar>
-        <Switch 
-          className={classes.switch}
-        />
       </AppBar>
-    </div>
+      </div>
   );
 }

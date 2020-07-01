@@ -1,8 +1,12 @@
-import Portfolio from './portfolio';
+// import Portfolio from './portfolio';
+import PortfolioList from './portfolioList';
+import PortfolioGrid from './portfolioGrid';
+
 import Header from './Header';
+import Footer from './Footer';
 import React, {Component} from 'react';
 import { fetchPhotos } from '../redux/fetch';
-import { Switch, Route, Redirect, withRouter, Grid } from 'react-router-dom'
+import { Switch, Route, Redirect, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux';
 
 
@@ -33,19 +37,26 @@ class Main extends Component {
                 </div>
               )
           }
-        const portfolio = () => {
+        const portfolioList = () => {
           return(
-            <Portfolio photos={this.props.photos.photos}  />
+            <PortfolioList photos={this.props.photos.photos}  />
+          )
+        }
+        const portfolioGrid = () => {
+          return(
+            <PortfolioGrid photos={this.props.photos.photos}  />
           )
         }
         return (
             <div>
               <Header fetchPhotos={this.props.fetchPhotos}/>
               <Switch>
-                <Route path='/portfolio' component={portfolio} />
-                <Redirect to='/portfolio'/>
+                <Route path='/list' component={portfolioList} />
+                <Route path='/grid' component={portfolioGrid} />
+
+                <Redirect to='/grid' />
               </Switch>
-            {/* <Footer/> */}
+            <Footer/>
           </div>
         );
     }
