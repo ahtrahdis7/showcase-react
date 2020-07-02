@@ -1,4 +1,3 @@
-// import Portfolio from './portfolio';
 import PortfolioList from './portfolioList';
 import PortfolioGrid from './portfolioGrid';
 
@@ -49,9 +48,10 @@ class Main extends Component {
             <div>
               <Header props={this.props}/>
               <Switch>
-                <Route exact path='/list' component={portfolioList} />
+                <Route exact path='/' component={portfolioList} />
                 <Route exact path='/grid' component={portfolioGrid} />
-                <Redirect to='/list' /> 
+                
+                <Redirect to='/' /> 
               </Switch>
             <Footer/>
           </div>
