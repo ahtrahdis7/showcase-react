@@ -76,7 +76,7 @@ function PortfolioList(props){
 
         return(
             <div >
-                <Container maxWidth="false" fluid className={classes.root}>
+                <Container  fluid className={classes.root}>
                     <Link href="/"  className={classes.button}>GRID VIEW</Link>
                         <List>
                             {pics}
