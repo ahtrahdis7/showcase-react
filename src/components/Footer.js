@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 
     },
     grid: {
-        padding: '50px',
+        padding: '5px',
         backgroundColor: "#1a237e"
     },
     list: {
@@ -42,7 +42,7 @@ function Footer(props) {
     const classes = useStyles();
     return(
         <div className={classes.root}>
-            <Grid className={classes.grid} md={12}>
+            <Grid container className={classes.grid} md={12}>
                 <Grid item md={3}>
                     <Card className={classes.cardImg}>
                         <CardMedia
@@ -54,9 +54,7 @@ function Footer(props) {
                 <Grid item md={4}>
                     <List className={classes.list}>
                         <ListItem>
-                            <Typography>
-                                <h3>Contact :</h3>
-                            </Typography>
+                            <h3>Contact :</h3>
                         </ListItem>
                         <ListItem>
                             <LinkedInIcon/>
