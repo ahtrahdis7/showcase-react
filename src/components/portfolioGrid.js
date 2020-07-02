@@ -97,7 +97,7 @@ function PortfolioGrid(props){
                 <Container fluid className={classes.root}>
                 <Link href="/list"  className={classes.button}>LIST VIEW</Link>
                     <div className={classes.gridList}>
-                        <GridList cellHeight="800" md={12}  >
+                        <GridList cellHeight="1100" md={12}  >
                             <Grid container spacing={4} md={12} sm={12} xs={12}>
                                 <Grid  xs={12} md={4} sm={6} >
                                     {picsg1}
