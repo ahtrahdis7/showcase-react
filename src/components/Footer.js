@@ -29,6 +29,7 @@ const useStyles = makeStyles({
     },
     grid: {
         padding: '5px',
+        paddingTop: '10px',
         backgroundColor: "#1a237e"
     },
     list: {
