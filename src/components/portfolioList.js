@@ -3,23 +3,24 @@ import { Card, CardMedia, CardActionArea, Container, Button, Typography, List, L
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-    img: props => ({
+    img:{
         height: 200,
         width: 200
-    }),
+    },
     grid: {
         padding: '10px'
     },
     card: {
         padding: '3px',
-        flex: '1 0 auto',
+        paddingRight: 0,
+        position: 'relative'
     },
     root:{
         paddingTop: 60,
-        paddingRight: 6,
+        paddingRight: 10,
     },
-    gridList: {
-        border: '3px',
+    list: {
+        position: 'relative'
       },
     button: {
         color: "#fafafa",
@@ -32,22 +33,23 @@ function RenderImage(image){
     const props = { height: image.image.height, width: image.image.width };
     const classes = useStyles(props);
     return (
-        <ListItem xs={12} md={12} divider="true" className={classes.card}>
-            <ListItemText xs={12} >
+        <ListItem xs={12} md={12} divider="true" >
+            <ListItemText xs={12} className={classes.list}>
                 <Typography>{image.image.alt_description}</Typography>
                 <Typography>{new Intl.DateTimeFormat('en-US', 
                                         { year: 'numeric', month: 'short', day: '2-digit'})
                                         .format(new Date(Date.parse(image.image.created_at)))}</Typography>
-                {/* <Typography>{image.image.tags}</Typography> */}
             </ListItemText>
-            <Card raised="true" key={image.id} xs={12} >
-                <CardActionArea href={image.image.urls.full}>
-                    <CardMedia
-                            className={`${classes.img}`}
-                            image={image.image.urls.regular}
-                            title={image.id} />
-                </CardActionArea>
-            </Card>
+            <div className={classes.card}>
+                <Card raised="true" key={image.id} xs={12}  >
+                    <CardActionArea href={image.image.urls.full}>
+                        <CardMedia
+                                className={`${classes.img}`}
+                                image={image.image.urls.regular}
+                                title={image.id} />
+                    </CardActionArea>
+                </Card>
+            </div>
             <Divider variant="inset" component="li" />
         </ListItem>
 
@@ -73,7 +75,7 @@ function PortfolioList(props){
 
         return(
             <div >
-                <Container fluid className={classes.root}>
+                <Container maxWidth="false" fluid className={classes.root}>
                     <Button href="/grid" variant="contained" className={classes.button}>Grid view</Button>
                         <List>
                             {pics}

@@ -34,7 +34,7 @@ function RenderImage(image){
     const classes = useStyles(props);
     return (
         <div>
-        <Grid item xs={12} className={classes.grid} >
+        <Grid item xs={12} sm={12} className={classes.grid} >
             <Card raised="true" key={image.id} className={classes.card} >
             <CardActionArea href={image.image.urls.full}>
                 <CardMedia 
@@ -94,8 +94,7 @@ function PortfolioGrid(props){
         return(
             <div >
                 <Container fluid className={classes.root}>
-                <Button to="/" variant="contained" className={classes.button}>List view</Button>
-                <br></br>
+                <Button href="/list" variant="contained" className={classes.button}>List view</Button>
                     <div className={classes.gridList}>
                         <GridList cellHeight="800" md={12}  >
                             <Grid container spacing={4} md={12} sm={12} xs={12}>

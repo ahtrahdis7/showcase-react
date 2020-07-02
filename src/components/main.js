@@ -5,7 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import React, {Component} from 'react';
 import { fetchPhotos } from '../redux/fetch';
-import { Switch, Route, withRouter} from 'react-router-dom'
+import { Switch, Route, Redirect, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux';
 
 
@@ -48,9 +48,10 @@ class Main extends Component {
             <div>
               <Header props={this.props}/>
               <Switch>
-                <Route exact path='/' component={portfolioList} />
-                <Route exact path='/grid' component={portfolioGrid} />
+                <Route exact path='/list' component={portfolioList} />
+                <Route path='/grid' component={portfolioGrid} />
                 
+                <Redirect to='/grid' /> 
               </Switch>
             <Footer/>
           </div>
