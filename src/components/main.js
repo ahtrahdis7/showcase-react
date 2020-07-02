@@ -49,9 +49,9 @@ class Main extends Component {
               <Header props={this.props}/>
               <Switch>
                 <Route exact path='/list' component={portfolioList} />
-                <Route path='/grid' component={portfolioGrid} />
+                <Route path='/' component={portfolioGrid} />
                 
-                <Redirect to='/grid' /> 
+                <Redirect to='/' /> 
               </Switch>
             <Footer/>
           </div>

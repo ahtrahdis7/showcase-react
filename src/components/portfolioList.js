@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea, Container, Button, Typography, List, ListItem, Divider, ListItemText } from '@material-ui/core';
+import { Card, CardMedia, CardActionArea, Container, Typography, List,Link, ListItem, Divider, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -23,8 +23,9 @@ const useStyles = makeStyles({
         position: 'relative'
       },
     button: {
-        color: "#fafafa",
-        backgroundColor: "#1a237e",
+        color: "#1a237e",
+        height: 40,
+        width: 50
     }
   });
 
@@ -76,7 +77,7 @@ function PortfolioList(props){
         return(
             <div >
                 <Container maxWidth="false" fluid className={classes.root}>
-                    <Button href="/grid" variant="contained" className={classes.button}>Grid view</Button>
+                    <Link href="/"  className={classes.button}>GRID VIEW</Link>
                         <List>
                             {pics}
                         </List>
