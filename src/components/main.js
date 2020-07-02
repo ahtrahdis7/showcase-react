@@ -22,21 +22,19 @@ const mapDispatchToProps = dispatch => ({
   });
 
 class Main extends Component {
+    constructor(props){
+      super(props);
 
+      this.state = {
+        searchTerm: "nature"
+      }
+    }
     componentDidMount() {
-        this.props.fetchPhotos("nature");
+        this.props.fetchPhotos(this.state.searchTerm);
       }
     render() {
-      const HomePage = () => {
-        return(
-                <div>
-                    <h1>profile</h1>
-                    <h1>profile</h1>
-                    <h1>profile</h1>
 
-                </div>
-              )
-          }
+
         const portfolioList = () => {
           return(
             <PortfolioList photos={this.props.photos.photos}  />
@@ -49,11 +47,10 @@ class Main extends Component {
         }
         return (
             <div>
-              <Header fetchPhotos={this.props.fetchPhotos}/>
+              <Header props={this.props}/>
               <Switch>
                 <Route path='/list' component={portfolioList} />
                 <Route path='/grid' component={portfolioGrid} />
-
                 <Redirect to='/grid' />
               </Switch>
             <Footer/>

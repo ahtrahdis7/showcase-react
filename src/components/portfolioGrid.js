@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     img: props => ({
-        height: props.height/(props.height/props.width*10),
+        height: props.height/(props.height/props.width*15),
+        objectFit: 'contain'
     }),
     grid: {
         padding: '10px'
@@ -14,7 +15,7 @@ const useStyles = makeStyles({
         flex: '1 0 auto',
     },
     root:{
-        paddingTop: 80,
+        paddingTop: 60,
         paddingRight: 6,
     },
     gridList: {
@@ -22,7 +23,8 @@ const useStyles = makeStyles({
         color: '#b3e5fc'
       },
       button: {
-        backgroundColor: "#b3e5fc"
+        color: "#fafafa",
+        backgroundColor: "#1a237e"
       }
   });
 

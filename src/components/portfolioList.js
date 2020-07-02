@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea,  Grid, Container, GridList, Button, CardContent, Typography, List, ListItem, Divider, ListItemText } from '@material-ui/core';
+import { Card, CardMedia, CardActionArea, Container, Button, Typography, List, ListItem, Divider, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -15,14 +15,15 @@ const useStyles = makeStyles({
         flex: '1 0 auto',
     },
     root:{
-        paddingTop: 80,
+        paddingTop: 60,
         paddingRight: 6,
     },
     gridList: {
         border: '3px',
       },
     button: {
-        backgroundColor: "#b3e5fc",
+        color: "#fafafa",
+        backgroundColor: "#1a237e",
     }
   });
 
@@ -37,6 +38,7 @@ function RenderImage(image){
                 <Typography>{new Intl.DateTimeFormat('en-US', 
                                         { year: 'numeric', month: 'short', day: '2-digit'})
                                         .format(new Date(Date.parse(image.image.created_at)))}</Typography>
+                {/* <Typography>{image.image.tags}</Typography> */}
             </ListItemText>
             <Card raised="true" key={image.id} xs={12} >
                 <CardActionArea href={image.image.urls.full}>

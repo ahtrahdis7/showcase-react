@@ -1,23 +1,19 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import {Toolbar } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { Menu, MenuItem, Button, Switch } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   appbar:{
-    paddingTop: 8,
-    paddingBottom: 8,
-    color: "#212121",
-    backgroundColor: "#b3e5fc"
+    paddingTop: 2,
+    paddingBottom: 2,
+    color: "#fafafa",
+    backgroundColor: "#1a237e"
   },
   search: {
     position: 'relative',
@@ -52,9 +48,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '150ch',
+      width: '180ch',
       '&:focus': {
-        width: '155ch',
+        width: '181ch',
       },
     },
   },
@@ -62,8 +58,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchAppBar(props) {
   const classes = useStyles();
-
-
   return (
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="fixed">
@@ -82,7 +76,7 @@ export default function SearchAppBar(props) {
                 fullWidth="true"
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(event)  => {
-                  props.fetchPhotos(event.target.value, 1)}}
+                  props.props.fetchPhotos(event.target.value, 1)}}
               />
             </div>
         </Toolbar>
