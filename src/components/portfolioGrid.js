@@ -94,7 +94,7 @@ function PortfolioGrid(props){
         return(
             <div >
                 <Container fluid className={classes.root}>
-                <Button to="/list" variant="contained" className={classes.button}>List view</Button>
+                <Button to="/" variant="contained" className={classes.button}>List view</Button>
                 <br></br>
                     <div className={classes.gridList}>
                         <GridList cellHeight="800" md={12}  >

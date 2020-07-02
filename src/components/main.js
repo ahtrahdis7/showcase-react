@@ -51,7 +51,6 @@ class Main extends Component {
                 <Route exact path='/' component={portfolioList} />
                 <Route exact path='/grid' component={portfolioGrid} />
                 
-                <Redirect to='/' /> 
               </Switch>
             <Footer/>
           </div>
