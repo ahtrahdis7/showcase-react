@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     },
     cardText: {
         color: "#fafafa",
-
+        paddingLeft:"30px"
     },
     grid: {
         padding: '5px',
@@ -44,7 +44,7 @@ function Footer(props) {
     return(
         <div className={classes.root}>
             <Grid container className={classes.grid} md={12}>
-                <Grid item md={3}>
+                <Grid item md={3} sm={12}>
                     <Card className={classes.cardImg}>
                         <CardMedia
                             image={Images.profilepic}
@@ -53,9 +53,14 @@ function Footer(props) {
                     </Card>
                 </Grid>
                 <Grid item md={4}>
+
+                </Grid>
+                
+                <Grid item md={5} sm={12} className={classes.cardText}>
+                    <Typography>About Me.</Typography>
                     <List className={classes.list}>
                         <ListItem>
-                            <h3>Contact :</h3>
+                            <h4>Contact :</h4>
                         </ListItem>
                         <ListItem>
                             <LinkedInIcon/>
@@ -79,21 +84,11 @@ function Footer(props) {
                         </ListItem>
 
                     </List>
-                </Grid>
-                <Grid item md={5} className={classes.cardText}>
-                    <h3>About Me.</h3>
                     <Typography>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                         when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
                         It has survived not only five centuries, but also the leap into electronic typesetting, 
-                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                        Aldus PageMaker including versions of Lorem Ipsum. remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                        Aldus PageMaker including versions of Lorem Ipsum.remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                        Aldus PageMaker including versions of Lorem Ipsum.
                     </Typography>
                 </Grid>
             </Grid>
