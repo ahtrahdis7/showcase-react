@@ -73,12 +73,12 @@ function PortfolioList(props){
 
         return(
             <div >
-
+                <Container fluid className={classes.root}>
                     <Button href="/grid" variant="contained" className={classes.button}>Grid view</Button>
                         <List>
                             {pics}
                         </List>
-
+                </Container>
             </div>
         );
     }
