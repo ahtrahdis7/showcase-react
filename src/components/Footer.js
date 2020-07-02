@@ -14,12 +14,14 @@ const useStyles = makeStyles({
     },
     img: {
         height: 500,
-        width: 400
+        width: 400,
     },
     cardImg: {
         padding: '5px',
         height: 500,
-        width: 400
+        width: 400,
+        position: 'relative'
+
     },
     cardText: {
         color: "#fafafa",
@@ -40,7 +42,7 @@ function Footer(props) {
     const classes = useStyles();
     return(
         <div className={classes.root}>
-            <Grid container className={classes.grid} md={12}>
+            <Grid className={classes.grid} md={12}>
                 <Grid item md={3}>
                     <Card className={classes.cardImg}>
                         <CardMedia
